@@ -13,6 +13,9 @@ export default class Chat extends React.Component {
     this.state = {
       messages: [],
     };
+
+    //refereces the collection 'messages'
+    this.referenceChatMessages = firebase.firestore().collection('messages');
   }
 
 //mounting the state of messages
@@ -86,3 +89,14 @@ const styles = StyleSheet.create({
   },
 
 });
+
+
+
+//api key
+apiKey: "AIzaSyBStt1FgerxbrWP-0GKjIoRYpmQIF78sXY",
+authDomain: "test-5f148.firebaseapp.com",
+projectId: "test-5f148",
+storageBucket: "test-5f148.appspot.com",
+messagingSenderId: "1009579266152",
+appId: "1:1009579266152:web:63296623ec90f757c7ebdd",
+measurementId: "G-MLJNF1EVD6"
