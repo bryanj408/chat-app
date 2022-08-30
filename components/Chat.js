@@ -150,7 +150,7 @@ export default class Chat extends React.Component {
       }),
       () => {
         // Save messages locally with Async Storage
-        this.saveMessages();
+        //this.saveMessages();
         // Call addMessage with last message in message state
         if (this.state.isConnected === true) {
           this.addMessages(this.state.messages[0]);
