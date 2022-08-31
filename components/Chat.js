@@ -142,6 +142,27 @@ export default class Chat extends React.Component {
     }
   };
 
+  //added from 5.4 (NEW)
+  async saveMessages() {
+    try {
+      await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  //added from 5.4 (NEW)
+  async deleteMessages() {
+    try {
+      await AsyncStorage.removeItem('messages');
+      this.setState({
+        messages: []
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   // Add message to the state
   onSend(messages = []) {
     this.setState(
@@ -150,7 +171,7 @@ export default class Chat extends React.Component {
       }),
       () => {
         // Save messages locally with Async Storage
-        //this.saveMessages();
+        this.saveMessages();
         // Call addMessage with last message in message state
         if (this.state.isConnected === true) {
           this.addMessages(this.state.messages[0]);
@@ -159,7 +180,17 @@ export default class Chat extends React.Component {
     );
   }
 
- 
+   //added from 5.4 (NEW)
+  renderInputToolbar(props) {
+    if (this.state.isConnected == false) {
+    } else {
+      return(
+        <InputToolbar
+        {...props}
+        />
+      );
+    }
+  }
 
   // Customize message bubbles
   renderBubble(props) {
